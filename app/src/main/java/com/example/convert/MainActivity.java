@@ -32,35 +32,40 @@ public class MainActivity extends AppCompatActivity {
         convert.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String input = textIn.getText().toString();
-                if (spF.getSelectedItem().toString().equals(spT.getSelectedItem().toString())) {
-                    printResult(input);
+                String fr = spF.getSelectedItem().toString();
+                String to = spT.getSelectedItem().toString();
+                String s;
+                if (fr.equals(to)) {
+                    s = "No thing to convert";
+                    printResult(s);
                 } else {
-                    if (spF.getSelectedItem().toString() == "HEX") {
+                    if (fr == "HEX") {
                         int hex = Integer.parseInt(input, 16);
                         input = Integer.toString(hex);
                     }
-                    if (spF.getSelectedItem().toString() == "OCT") {
+                    if (fr == "OCT") {
                         int oct = Integer.parseInt(input, 8);
                         input = Integer.toString(oct);
                     }
-                    if (spF.getSelectedItem().toString() == "BIN") {
+                    if (fr == "BIN") {
                         int bin = Integer.parseInt(input, 2);
                         input = Integer.toString(bin);
                     }
                     int change = Integer.parseInt(input);
-                    if (spT.getSelectedItem().toString() == "HEX"){
-                        String s = Integer.toHexString(change);
+                    if (to == "HEX"){
+                        s = Integer.toHexString(change);
                         printResult(s);
                     }
-                    if (spT.getSelectedItem().toString() == "DEC"){
-                        printResult(input);
+                    if (to == "DEC"){
+                        s = input;
+                        printResult(s);
                     }
                     if (spT.getSelectedItem().toString() == "OCT"){
-                        String s = Integer.toOctalString(change);
+                        s = Integer.toOctalString(change);
                         printResult(s);
                     }
                     if (spT.getSelectedItem().toString() == "BIN"){
-                        String s = Integer.toBinaryString(change);
+                        s = Integer.toBinaryString(change);
                         printResult(s);
                     }
                 }
